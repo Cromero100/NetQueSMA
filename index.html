@@ -337,6 +337,25 @@
         padding: 150px 0;
         position: relative;
         z-index: 10;
+        background: linear-gradient(
+          135deg,
+          rgba(30, 41, 59, 0.8) 0%,
+          rgba(15, 23, 42, 0.9) 100%
+        );
+        border-top: 1px solid rgba(6, 182, 212, 0.2);
+        border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+      }
+
+      .services::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="services-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(6,182,212,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23services-grid)"/></svg>');
+        opacity: 0.3;
+        pointer-events: none;
       }
 
       .container {
@@ -461,11 +480,11 @@
         position: absolute;
         background: linear-gradient(
           45deg,
-          rgba(6, 182, 212, 0.1),
-          rgba(139, 92, 246, 0.1)
+          rgba(6, 182, 212, 0.08),
+          rgba(139, 92, 246, 0.08)
         );
         border-radius: 50%;
-        filter: blur(40px);
+        filter: blur(60px);
         animation: blob-morph 15s infinite ease-in-out;
       }
 
@@ -514,6 +533,32 @@
         padding: 150px 0;
         position: relative;
         z-index: 10;
+        background: linear-gradient(
+          45deg,
+          rgba(15, 23, 42, 0.95) 0%,
+          rgba(30, 41, 59, 0.85) 50%,
+          rgba(15, 23, 42, 0.95) 100%
+        );
+      }
+
+      .about::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(6, 182, 212, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(139, 92, 246, 0.1) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
       }
 
       .about-grid {
@@ -618,9 +663,42 @@
       /* Interactive Contact Section */
       .contact-section {
         padding: 150px 0;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        background: linear-gradient(
+          135deg,
+          rgba(30, 41, 59, 0.9) 0%,
+          rgba(15, 23, 42, 0.95) 50%,
+          rgba(30, 41, 59, 0.9) 100%
+        );
         position: relative;
         z-index: 10;
+        border-top: 1px solid rgba(6, 182, 212, 0.2);
+      }
+
+      .contact-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at top left,
+            rgba(6, 182, 212, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at bottom right,
+            rgba(139, 92, 246, 0.1) 0%,
+            transparent 50%
+          ),
+          linear-gradient(
+            45deg,
+            transparent 48%,
+            rgba(6, 182, 212, 0.03) 49%,
+            rgba(6, 182, 212, 0.03) 51%,
+            transparent 52%
+          );
+        pointer-events: none;
       }
 
       .contact-container {
@@ -735,6 +813,37 @@
       .stats-section {
         padding: 100px 0;
         text-align: center;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(6, 182, 212, 0.3);
+        border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+        position: relative;
+      }
+
+      .stats-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(6, 182, 212, 0.05) 50%,
+          transparent 100%
+        );
+        animation: stats-flow 8s ease-in-out infinite;
+      }
+
+      @keyframes stats-flow {
+        0%,
+        100% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(100%);
+        }
       }
 
       .stats-grid {
@@ -929,31 +1038,50 @@
         </p>
 
         <div class="services-grid">
-          <div class="service-morph">
+          <!-- <div class="service-morph">
             <div class="service-icon-morph">🌐</div>
             <h3>Desarrollo Web Avanzado</h3>
             <p>
               Aplicaciones web progresivas con IA integrada, realidad aumentada
               y experiencias inmersivas que redefinen la interacción digital.
             </p>
-          </div>
+          </div> -->
 
-          <div class="service-morph">
+          <!-- <div class="service-morph">
             <div class="service-icon-morph">📱</div>
             <h3>Apps Nativas Inteligentes</h3>
             <p>
               Aplicaciones móviles con machine learning, IoT y tecnologías
               emergentes que anticipan las necesidades del usuario.
             </p>
+          </div> -->
+
+          <div class="service-morph">
+            <div class="service-icon-morph">💻</div>
+            <h3>Desarrollo Web Avanzado</h3>
+            <p>
+              Aplicaciones web progresivas con interfaces modernas,
+              arquitecturas escalables y experiencias inmersivas que redefinen
+              la interacción digital.
+            </p>
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">🧠</div>
-            <h3>IA & Automatización</h3>
+            <div class="service-icon-morph">📱</div>
+            <h3>Apps Móviles Nativas</h3>
             <p>
-              Sistemas inteligentes con IA generativa, procesamiento de lenguaje
-              natural y automatización cognitiva que revolucionan la
-              productividad.
+              Aplicaciones móviles nativas e híbridas con diseño intuitivo,
+              rendimiento optimizado y funcionalidades que conectan con tus
+              usuarios.
+            </p>
+          </div>
+
+          <div class="service-morph">
+            <div class="service-icon-morph">🔧</div>
+            <h3>Software Empresarial</h3>
+            <p>
+              Sistemas de gestión personalizados, CRM, ERP y soluciones
+              empresariales que optimizan y automatizan tus procesos de negocio.
             </p>
           </div>
 
@@ -961,26 +1089,27 @@
             <div class="service-icon-morph">🚀</div>
             <h3>Arquitecturas Cloud</h3>
             <p>
-              Infraestructuras serverless, microservicios y arquitecturas
-              distribuidas que escalan infinitamente con tu crecimiento.
+              Infraestructuras en la nube, microservicios y arquitecturas
+              distribuidas que escalan con tu crecimiento y optimizan recursos.
             </p>
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">🔮</div>
-            <h3>Realidad Extendida</h3>
+            <div class="service-icon-morph">🔒</div>
+            <h3>Ciberseguridad</h3>
             <p>
-              Experiencias inmersivas en VR/AR, metaverso empresarial y
-              interfaces espaciales que trascienden lo convencional.
+              Protección integral de datos, auditorías de seguridad y
+              implementación de mejores prácticas para mantener tu información
+              segura.
             </p>
           </div>
 
           <div class="service-morph">
             <div class="service-icon-morph">⚡</div>
-            <h3>Blockchain & Web3</h3>
+            <h3>Integración de Sistemas</h3>
             <p>
-              Soluciones descentralizadas, contratos inteligentes y ecosistemas
-              tokenizados que redefininen los modelos de negocio.
+              Conectamos tus sistemas existentes, automatizamos flujos de
+              trabajo y creamos ecosistemas tecnológicos eficientes.
             </p>
           </div>
         </div>
@@ -991,12 +1120,12 @@
     <section class="stats-section">
       <div class="container">
         <div class="stats-grid">
-          <div class="stat-morph">
+          <!-- <div class="stat-morph">
             <div class="stat-number" data-count="150">0</div>
             <div class="stat-label">Proyectos Transformados</div>
-          </div>
+          </div> -->
           <div class="stat-morph">
-            <div class="stat-number" data-count="98">0</div>
+            <div class="stat-number" data-count="100">0</div>
             <div class="stat-label">% Satisfacción Cliente</div>
           </div>
           <div class="stat-morph">
@@ -1005,7 +1134,7 @@
           </div>
           <div class="stat-morph">
             <div class="stat-number" data-count="24">0</div>
-            <div class="stat-label">Soporte 7/24</div>
+            <div class="stat-label">Soporte 24/7</div>
           </div>
         </div>
       </div>
@@ -1018,19 +1147,19 @@
           <div class="about-text">
             <h2>El Futuro es Ahora</h2>
             <p>
-              En NetQueSMA no solo desarrollamos software, creamos ecosistemas
-              digitales que evolucionan. Cada línea de código es una puerta
-              hacia nuevas posibilidades.
+              En NetQueSMA no solo desarrollamos software, creamos soluciones
+              digitales que evolucionan con tu negocio. Cada línea de código
+              está pensada para generar valor real.
             </p>
             <p>
-              Nuestro ADN está compuesto por innovación disruptiva, pensamiento
-              exponencial y una obsesión por la excelencia técnica que nos
-              mantiene siempre un paso adelante.
+              Nuestro enfoque combina metodologías ágiles, las mejores prácticas
+              de desarrollo y un profundo entendimiento de las necesidades
+              empresariales para entregar resultados excepcionales.
             </p>
             <p>
-              Colaboramos con visionarios que entienden que la tecnología no es
-              solo una herramienta, sino el catalizador de la transformación
-              empresarial del mañana.
+              Trabajamos con empresas visionarias que entienden que la
+              tecnología bien implementada es el catalizador que impulsa el
+              crecimiento y la innovación sostenible.
             </p>
           </div>
           <div class="morph-visualization">
@@ -1087,7 +1216,7 @@
                   <h4 style="color: var(--accent); margin-bottom: 5px">
                     Email
                   </h4>
-                  <p>innovacion@netquesma.com</p>
+                  <p>netquesma@gmail.com</p>
                 </div>
               </div>
 
@@ -1120,7 +1249,7 @@
                   <h4 style="color: var(--accent); margin-bottom: 5px">
                     WhatsApp
                   </h4>
-                  <p>+57 300 123 4567</p>
+                  <p>+57 318 693 2510</p>
                 </div>
               </div>
 
@@ -1146,7 +1275,7 @@
                   <h4 style="color: var(--accent); margin-bottom: 5px">
                     Ubicación
                   </h4>
-                  <p>Cúcuta, Norte de Santander</p>
+                  <p>Ocaña, Norte de Santander</p>
                 </div>
               </div>
             </div>
@@ -1215,18 +1344,18 @@
             <h3>Tecnologías</h3>
             <a href="#">React & Next.js</a>
             <a href="#">Node.js & Python</a>
-            <a href="#">Cloud Native</a>
-            <a href="#">IA & Machine Learning</a>
-            <a href="#">Blockchain</a>
+            <a href="#">Cloud Computing</a>
+            <a href="#">Bases de Datos</a>
+            <a href="#">APIs & Microservicios</a>
           </div>
 
           <div class="footer-section">
             <h3>Industrias</h3>
-            <a href="#">Fintech</a>
-            <a href="#">E-commerce</a>
+            <a href="#">Comercio Electrónico</a>
+            <a href="#">Servicios Financieros</a>
             <a href="#">Salud Digital</a>
-            <a href="#">EdTech</a>
-            <a href="#">IoT Industrial</a>
+            <a href="#">Educación</a>
+            <a href="#">Manufactura</a>
           </div>
         </div>
 
