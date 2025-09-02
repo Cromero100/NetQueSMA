@@ -1102,7 +1102,13 @@
           </div> -->
 
           <div class="service-morph">
-            <div class="service-icon-morph">💻</div>
+            <div class="service-icon-morph">
+              <img
+                src="monitor.png"
+                alt="Monitor Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
             <h3>Desarrollo Web Avanzado</h3>
             <p>
               Aplicaciones web progresivas con interfaces modernas,
@@ -1112,7 +1118,13 @@
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">📱</div>
+            <div class="service-icon-morph">
+              <img
+                src="smartphone.png"
+                alt="smartphone Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
             <h3>Apps Móviles Nativas</h3>
             <p>
               Aplicaciones móviles nativas e híbridas con diseño intuitivo,
@@ -1122,7 +1134,13 @@
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">🔧</div>
+            <div class="service-icon-morph">
+              <img
+                src="tool.png"
+                alt="tool Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
             <h3>Software Empresarial</h3>
             <p>
               Sistemas de gestión personalizados, CRM, ERP y soluciones
@@ -1131,7 +1149,13 @@
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">🚀</div>
+            <div class="service-icon-morph">
+              <img
+                src="cloud.png"
+                alt="cloud Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
             <h3>Arquitecturas Cloud</h3>
             <p>
               Infraestructuras en la nube, microservicios y arquitecturas
@@ -1140,7 +1164,13 @@
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">🔒</div>
+            <div class="service-icon-morph">
+              <img
+                src="lock.png"
+                alt="cloud Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
             <h3>Ciberseguridad</h3>
             <p>
               Protección integral de datos, auditorías de seguridad y
@@ -1150,7 +1180,13 @@
           </div>
 
           <div class="service-morph">
-            <div class="service-icon-morph">⚡</div>
+            <div class="service-icon-morph">
+              <img
+                src="zap.png"
+                alt="cloud Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
             <h3>Integración de Sistemas</h3>
             <p>
               Conectamos tus sistemas existentes, automatizamos flujos de
@@ -1255,7 +1291,11 @@
                     justify-content: center;
                   "
                 >
-                  📧
+                  <img
+                    src="mail.png"
+                    alt="mail Icon"
+                    style="width: 24px; height: 24px"
+                  />
                 </div>
                 <div>
                   <h4 style="color: var(--accent); margin-bottom: 5px">
@@ -1288,7 +1328,11 @@
                     justify-content: center;
                   "
                 >
-                  📱
+                  <img
+                    src="smartphone.png"
+                    alt="smartphone Icon"
+                    style="width: 24px; height: 24px"
+                  />
                 </div>
                 <div>
                   <h4 style="color: var(--accent); margin-bottom: 5px">
@@ -1314,7 +1358,11 @@
                     justify-content: center;
                   "
                 >
-                  📍
+                  <img
+                    src="map-pin.png"
+                    alt="map Icon"
+                    style="width: 24px; height: 24px"
+                  />
                 </div>
                 <div>
                   <h4 style="color: var(--accent); margin-bottom: 5px">
@@ -1326,7 +1374,11 @@
             </div>
           </div>
 
-          <form class="contact-form-morph" onsubmit="handleSubmit(event)">
+          <form
+            id="contact-form"
+            class="contact-form-morph"
+            onsubmit="handleSubmit(event)"
+          >
             <div class="form-group">
               <input
                 type="text"
@@ -1365,7 +1417,7 @@
               <label for="proyecto">Describe tu Visión</label>
             </div>
 
-            <button type="submit" class="submit-morph">
+            <button type="submit" class="submit-morph" id="submitBtn">
               <span class="btn-text">Iniciar Transformación</span>
             </button>
           </form>
@@ -1409,7 +1461,69 @@
         </div>
       </div>
     </footer>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      emailjs.init("9FsrcwKecBMayud5j"); // Tu Public Key
+    </script>
 
+    <script>
+      const btn = document.getElementById("submitBtn");
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const submitBtn = form.querySelector(".submit-morph");
+        const btnText = submitBtn.querySelector(".btn-text");
+
+        btnText.textContent = "sending...";
+        submitBtn.disabled = true;
+
+        const serviceID = "default_service";
+        const templateID = "template_9gcis3a";
+
+        emailjs.sendForm(serviceID, templateID, form).then(
+          () => {
+            // Animación morph
+            submitBtn.style.borderRadius = "50%";
+            submitBtn.style.width = "60px";
+            submitBtn.style.height = "60px";
+            btnText.style.opacity = "0";
+
+            setTimeout(() => {
+              btnText.textContent = "✓";
+              btnText.style.opacity = "1";
+              btnText.style.fontSize = "2rem";
+
+              setTimeout(() => {
+                submitBtn.style.borderRadius = "25px";
+                submitBtn.style.width = "100%";
+                submitBtn.style.height = "auto";
+                btnText.textContent = "¡Mensaje Enviado!";
+                btnText.style.fontSize = "1.2rem";
+                submitBtn.style.background =
+                  "linear-gradient(45deg, #10b981, #059669)";
+
+                setTimeout(() => {
+                  btnText.textContent = "Iniciar Transformación";
+                  submitBtn.style.background = "";
+                  form.reset();
+                  submitBtn.disabled = false;
+                }, 3000);
+              }, 1000);
+            }, 500);
+          },
+          (err) => {
+            btnText.textContent = "Error";
+            submitBtn.disabled = false;
+            alert("Error al enviar: " + JSON.stringify(err));
+          }
+        );
+      }
+    </script>
     <script>
       // Custom Cursor
       const cursor = document.querySelector(".cursor");
@@ -1509,41 +1623,6 @@
       }
 
       // Form submission with morphing animation
-      function handleSubmit(event) {
-        event.preventDefault();
-
-        const form = event.target;
-        const submitBtn = form.querySelector(".submit-morph");
-        const btnText = submitBtn.querySelector(".btn-text");
-
-        // Morph animation
-        submitBtn.style.borderRadius = "50%";
-        submitBtn.style.width = "60px";
-        submitBtn.style.height = "60px";
-        btnText.style.opacity = "0";
-
-        setTimeout(() => {
-          btnText.textContent = "✓";
-          btnText.style.opacity = "1";
-          btnText.style.fontSize = "2rem";
-
-          setTimeout(() => {
-            submitBtn.style.borderRadius = "25px";
-            submitBtn.style.width = "100%";
-            submitBtn.style.height = "auto";
-            btnText.textContent = "¡Mensaje Enviado!";
-            btnText.style.fontSize = "1.2rem";
-            submitBtn.style.background =
-              "linear-gradient(45deg, #10b981, #059669)";
-
-            setTimeout(() => {
-              btnText.textContent = "Iniciar Transformación";
-              submitBtn.style.background = "";
-              form.reset();
-            }, 3000);
-          }, 1000);
-        }, 500);
-      }
 
       // Intersection Observer for animations
       const observerOptions = {
@@ -1614,18 +1693,6 @@
         card.addEventListener("mouseleave", () => {
           card.style.background = "rgba(30, 41, 59, 0.5)";
         });
-      });
-
-      // Logo click effect
-      document.querySelector(".logo-morph").addEventListener("click", () => {
-        const circle = document.querySelector(".morph-circle");
-        circle.style.borderRadius = "20% 80% 30% 70% / 60% 40% 70% 30%";
-        circle.style.transform = "rotate(720deg) scale(1.5)";
-
-        setTimeout(() => {
-          circle.style.borderRadius = "50%";
-          circle.style.transform = "rotate(0deg) scale(1)";
-        }, 800);
       });
 
       // Dynamic background color change based on scroll
