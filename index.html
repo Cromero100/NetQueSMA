@@ -1043,34 +1043,107 @@
       }
 
       /* Responsive */
-      @media (max-width: 768px) {
-        .about-grid,
-        .mission-section,
-        .vision-section {
-          grid-template-columns: 1fr;
-          gap: 40px;
+      /* Responsive general */
+      @media (max-width: 992px) {
+        .nav-container {
+          padding: 0 15px;
         }
 
-        .vision-section .content-card,
-        .vision-section .image-container {
-          order: initial;
+        .hero-content img {
+          width: 280px !important;
+          height: auto !important;
         }
 
-        .content-card {
-          padding: 30px;
+        .hero-subtitle {
+          font-size: 1rem;
+          margin-bottom: 30px;
+        }
+
+        .cta-morph {
+          padding: 15px 30px;
+          font-size: 1rem;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .service-hex {
+          width: 220px;
+          height: 220px;
+          margin: 20px auto;
         }
 
         .image-container {
-          height: 300px;
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        /* Navegación: logo centrado y menú hamburguesa */
+        .nav-container {
+          justify-content: center;
         }
 
-        .morph-visualization {
-          margin: 50px 0;
-          height: 300px;
+        .logo-company img {
+          width: 50px;
+          height: 50px;
         }
 
-        .connector-line {
-          display: none;
+        .hero-content img {
+          width: 200px !important;
+        }
+
+        .company-name {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+          font-size: 0.9rem;
+          padding: 0 10px;
+        }
+
+        .cta-morph {
+          width: 100%;
+          padding: 12px 0;
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .section-subtitle {
+          font-size: 1rem;
+          margin-bottom: 40px;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .service-hex {
+          width: 180px;
+          height: 180px;
+        }
+
+        .about-grid,
+        .mission-section,
+        .vision-section,
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .contact-form-morph {
+          padding: 20px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
         }
       }
 
