@@ -21,6 +21,10 @@
         --text-muted: #94a3b8;
       }
 
+      img {
+        border-radius: 20px;
+      }
+
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
         background: var(--primary);
@@ -378,6 +382,131 @@
       }
 
       /* Services Section */
+      .service-hex {
+        width: 280px;
+        height: 280px;
+        position: relative;
+        margin: 40px 20px;
+      }
+
+      .hex-shape {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 255, 255, 0.1) 0%,
+          rgba(255, 0, 255, 0.1) 50%,
+          rgba(255, 255, 0, 0.1) 100%
+        );
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .hex-shape::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(0, 255, 255, 0.2) 50%,
+          transparent 70%
+        );
+        transform: translateX(-100%);
+        transition: transform 1s ease;
+      }
+
+      .service-hex:hover .hex-shape {
+        transform: rotate(15deg) scale(1.1);
+        border-color: var(--accent);
+        background: linear-gradient(
+          135deg,
+          rgba(0, 255, 255, 0.2) 0%,
+          rgba(255, 0, 255, 0.2) 50%,
+          rgba(255, 255, 0, 0.2) 100%
+        );
+        box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3),
+          inset 0 0 30px rgba(255, 255, 255, 0.1);
+      }
+
+      .service-hex:hover .hex-shape::before {
+        transform: translateX(100%);
+      }
+
+      .hex-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 200px;
+        z-index: 5;
+        transition: all 0.6s ease;
+      }
+
+      .hex-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: linear-gradient(45deg, var(--accent), var(--accent-2));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        position: relative;
+        transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      }
+
+      .service-hex:hover .hex-icon {
+        transform: rotateY(360deg) scale(1.2);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        background: linear-gradient(45deg, var(--accent-2), var(--accent-3));
+        box-shadow: 0 0 40px rgba(255, 0, 255, 0.7);
+      }
+
+      .hex-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--text);
+        font-weight: 700;
+        transition: all 0.4s ease;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .service-hex:hover .hex-content h3 {
+        color: var(--accent);
+        transform: scale(1.1);
+      }
+
+      .hex-content p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.4;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease 0.2s;
+      }
+
+      .service-hex:hover .hex-content p {
+        opacity: 1;
+        transform: translateY(0);
+      }
       .services {
         padding: 150px 0;
         position: relative;
@@ -574,6 +703,12 @@
       }
 
       /* About Section with Morphing Cards */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
       .about {
         padding: 150px 0;
         position: relative;
@@ -584,6 +719,7 @@
           rgba(30, 41, 59, 0.85) 50%,
           rgba(15, 23, 42, 0.95) 100%
         );
+        overflow: hidden;
       }
 
       .about::before {
@@ -606,11 +742,14 @@
         pointer-events: none;
       }
 
+      /* Primera sección - El futuro es ahora (sin cambios) */
       .about-grid {
+        margin-top: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 80px;
         align-items: center;
+        margin-bottom: 120px;
       }
 
       .about-text h2 {
@@ -632,6 +771,7 @@
 
       .morph-visualization {
         height: 400px;
+        margin: 100px;
         position: relative;
         display: flex;
         align-items: center;
@@ -645,6 +785,7 @@
         border-radius: 50%;
         position: relative;
         animation: hub-pulse 3s ease-in-out infinite;
+        box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
       }
 
       .satellite {
@@ -654,6 +795,7 @@
         border-radius: 50%;
         position: absolute;
         animation: orbit 8s linear infinite;
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
       }
 
       .satellite:nth-child(2) {
@@ -702,6 +844,233 @@
         100% {
           transform: rotate(360deg) translateX(150px) rotate(-360deg);
           border-radius: 50%;
+        }
+      }
+
+      /* Nuevos estilos mejorados para Misión y Visión */
+      .mission-vision-container {
+        display: grid;
+        gap: 80px;
+        margin-top: 80px;
+      }
+
+      .mission-section,
+      .vision-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding: 60px 0;
+        position: relative;
+      }
+
+      /* Alternar orden para crear zigzag */
+      .vision-section .content-card {
+        order: 1;
+      }
+
+      .vision-section .image-container {
+        order: 2;
+      }
+
+      .content-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        padding: 50px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .content-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-2),
+          var(--accent-3)
+        );
+        border-radius: 24px 24px 0 0;
+      }
+
+      .content-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+          0 0 60px rgba(6, 182, 212, 0.1);
+      }
+
+      .content-card h2 {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        margin-bottom: 30px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .content-card h2::before {
+        content: "";
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        border-radius: 2px;
+        transition: width 0.4s ease;
+      }
+
+      .content-card:hover h2::before {
+        width: 80px;
+      }
+
+      .content-card p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        text-align: justify;
+      }
+
+      .image-container {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        height: 500px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+      }
+
+      .image-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(6, 182, 212, 0.1) 0%,
+          transparent 50%,
+          rgba(139, 92, 246, 0.1) 100%
+        );
+        z-index: 1;
+        transition: opacity 0.4s ease;
+      }
+
+      .image-container:hover::before {
+        opacity: 0.5;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .image-container:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Efectos de partículas decorativas */
+      .particle-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        opacity: 0.6;
+      }
+
+      .particle:nth-child(1) {
+        top: 20%;
+        left: 10%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .particle:nth-child(2) {
+        top: 60%;
+        right: 15%;
+        animation: float 8s ease-in-out infinite reverse;
+      }
+
+      .particle:nth-child(3) {
+        bottom: 30%;
+        left: 20%;
+        animation: float 7s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Líneas conectoras */
+      .connector-line {
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        opacity: 0.5;
+      }
+
+      .mission-section .connector-line {
+        left: -40px;
+        background: linear-gradient(270deg, var(--accent-2), transparent);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .about-grid,
+        .mission-section,
+        .vision-section {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .vision-section .content-card,
+        .vision-section .image-container {
+          order: initial;
+        }
+
+        .content-card {
+          padding: 30px;
+        }
+
+        .image-container {
+          height: 300px;
+        }
+
+        .morph-visualization {
+          margin: 50px 0;
+          height: 300px;
+        }
+
+        .connector-line {
+          display: none;
         }
       }
 
@@ -932,44 +1301,121 @@
 
       /* Footer */
       footer {
-        background: var(--secondary);
-        padding: 80px 0 40px;
-        border-top: 1px solid rgba(6, 182, 212, 0.3);
+        background: linear-gradient(
+          135deg,
+          var(--bg-darker) 0%,
+          var(--bg-dark) 100%
+        );
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-2),
+          var(--primary)
+        );
       }
 
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        margin-bottom: 40px;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+        padding: 80px 0 60px;
       }
 
       .footer-section h3 {
-        color: var(--accent);
-        margin-bottom: 20px;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        background: linear-gradient(45deg, var(--text), var(--accent));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         font-weight: 700;
       }
 
-      .footer-section p,
+      .footer-section p {
+        color: var(--text-muted);
+        margin-bottom: 15px;
+        line-height: 1.7;
+      }
+
+      .company-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .company-details {
+        margin-top: 25px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border-left: 4px solid var(--accent);
+      }
+
+      .company-details p {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+
+      .company-details p:last-child {
+        margin-bottom: 0;
+      }
+
       .footer-section a {
+        display: block;
         color: var(--text-muted);
         text-decoration: none;
-        margin-bottom: 10px;
-        display: block;
+        margin-bottom: 12px;
         transition: all 0.3s ease;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .footer-section a::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        transition: transform 0.3s ease;
       }
 
       .footer-section a:hover {
-        color: var(--accent);
-        transform: translateX(5px);
+        color: var(--text);
+        transform: translateX(8px);
+      }
+
+      .footer-section a:hover::before {
+        transform: translateX(4px);
       }
 
       .footer-bottom {
-        border-top: 1px solid rgba(148, 163, 184, 0.2);
-        padding-top: 30px;
         text-align: center;
+        padding: 30px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-bottom p {
         color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 60px 0 40px;
+        }
       }
 
       /* Animations */
@@ -1041,6 +1487,16 @@
       <div class="nav-container">
         <div class="logo-company">
           <img src="icon.png" alt="NetQueSMA Logo" />
+          <img
+            src="NetQueSMAText.png"
+            alt="NetQueSMA Logo"
+            style="
+              width: 130px;
+              height: auto;
+              margin-left: 10px;
+              margin-bottom: 25px;
+            "
+          />
         </div>
         <ul class="nav-links">
           <li><a href="#inicio">Inicio</a></li>
@@ -1060,13 +1516,20 @@
       </div>
       <div class="container">
         <div class="hero-content">
+          <img
+            src="NetQueSMAIcon.png"
+            alt="NetQueSMA Logo"
+            style="width: 450px; height: 450px; margin-bottom: 20px"
+          />
           <div class="company-name">NetQueSMA SAS</div>
-          <h1 class="hero-title">
+
+          <!-- <h1 class="hero-title">
             <span class="morph-text">Innovación</span> Digital <br />Sin Límites
-          </h1>
+          </h1> -->
           <p class="hero-subtitle">
             Transformamos ideas en experiencias digitales extraordinarias.
-            Software a la medida que evoluciona con tu negocio.
+            Soluciones integrales en tecnología, telecomunicaciones, IoT,
+            seguridad, gestión de calidad y educación.
           </p>
           <a href="#contacto" class="cta-morph">Crear el Futuro</a>
         </div>
@@ -1078,29 +1541,11 @@
       <div class="container">
         <h2 class="section-title">Servicios que Transforman</h2>
         <p class="section-subtitle">
-          Soluciones tecnológicas de vanguardia diseñadas para revolucionar tu
-          industria
+          Soluciones tecnológicas integrales y capacitaciones especializadas
+          para impulsar tu crecimiento
         </p>
 
         <div class="services-grid">
-          <!-- <div class="service-morph">
-            <div class="service-icon-morph">🌐</div>
-            <h3>Desarrollo Web Avanzado</h3>
-            <p>
-              Aplicaciones web progresivas con IA integrada, realidad aumentada
-              y experiencias inmersivas que redefinen la interacción digital.
-            </p>
-          </div> -->
-
-          <!-- <div class="service-morph">
-            <div class="service-icon-morph">📱</div>
-            <h3>Apps Nativas Inteligentes</h3>
-            <p>
-              Aplicaciones móviles con machine learning, IoT y tecnologías
-              emergentes que anticipan las necesidades del usuario.
-            </p>
-          </div> -->
-
           <div class="service-morph">
             <div class="service-icon-morph">
               <img
@@ -1109,27 +1554,11 @@
                 style="width: 40px; height: 40px"
               />
             </div>
-            <h3>Desarrollo Web Avanzado</h3>
+            <h3>Equipos y Tecnología</h3>
             <p>
-              Aplicaciones web progresivas con interfaces modernas,
-              arquitecturas escalables y experiencias inmersivas que redefinen
-              la interacción digital.
-            </p>
-          </div>
-
-          <div class="service-morph">
-            <div class="service-icon-morph">
-              <img
-                src="smartphone.png"
-                alt="smartphone Icon"
-                style="width: 40px; height: 40px"
-              />
-            </div>
-            <h3>Apps Móviles Nativas</h3>
-            <p>
-              Aplicaciones móviles nativas e híbridas con diseño intuitivo,
-              rendimiento optimizado y funcionalidades que conectan con tus
-              usuarios.
+              Venta e instalación de equipos de cómputo, redes,
+              telecomunicaciones y dispositivos IoT. Configuración de software y
+              mantenimiento preventivo y correctivo.
             </p>
           </div>
 
@@ -1141,25 +1570,11 @@
                 style="width: 40px; height: 40px"
               />
             </div>
-            <h3>Software Empresarial</h3>
+            <h3>Infraestructura de Redes</h3>
             <p>
-              Sistemas de gestión personalizados, CRM, ERP y soluciones
-              empresariales que optimizan y automatizan tus procesos de negocio.
-            </p>
-          </div>
-
-          <div class="service-morph">
-            <div class="service-icon-morph">
-              <img
-                src="cloud.png"
-                alt="cloud Icon"
-                style="width: 40px; height: 40px"
-              />
-            </div>
-            <h3>Arquitecturas Cloud</h3>
-            <p>
-              Infraestructuras en la nube, microservicios y arquitecturas
-              distribuidas que escalan con tu crecimiento y optimizan recursos.
+              Diseño e implementación de redes LAN, WAN, enlaces inalámbricos y
+              torres de telecomunicaciones. Soluciones completas de
+              conectividad.
             </p>
           </div>
 
@@ -1167,15 +1582,14 @@
             <div class="service-icon-morph">
               <img
                 src="lock.png"
-                alt="cloud Icon"
+                alt="Security Icon"
                 style="width: 40px; height: 40px"
               />
             </div>
-            <h3>Ciberseguridad</h3>
+            <h3>Sistemas de Seguridad</h3>
             <p>
-              Protección integral de datos, auditorías de seguridad y
-              implementación de mejores prácticas para mantener tu información
-              segura.
+              Implementación de CCTV con cámaras analógicas e IP, grabadores
+              DVR/NVR y monitoreo remoto para protección integral.
             </p>
           </div>
 
@@ -1183,15 +1597,172 @@
             <div class="service-icon-morph">
               <img
                 src="zap.png"
-                alt="cloud Icon"
+                alt="IoT Icon"
                 style="width: 40px; height: 40px"
               />
             </div>
-            <h3>Integración de Sistemas</h3>
+            <h3>Automatización IoT</h3>
             <p>
-              Conectamos tus sistemas existentes, automatizamos flujos de
-              trabajo y creamos ecosistemas tecnológicos eficientes.
+              Integración de sensores y dispositivos IoT para automatización de
+              hogares, oficinas e industrias. Soluciones inteligentes
+              conectadas.
             </p>
+          </div>
+
+          <div class="service-morph">
+            <div class="service-icon-morph">
+              <img
+                src="cloud.png"
+                alt="Quality Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
+            <h3>Gestión de Calidad ISO</h3>
+            <p>
+              Implementación de sistemas de gestión ISO 9001, 27001, 14001.
+              Diagnóstico, documentación, auditoría interna y certificación.
+            </p>
+          </div>
+
+          <div class="service-morph">
+            <div class="service-icon-morph">
+              <img
+                src="smartphone.png"
+                alt="Education Icon"
+                style="width: 40px; height: 40px"
+              />
+            </div>
+            <h3>Capacitaciones Tecnológicas</h3>
+            <p>
+              Formación especializada en redes, robótica, IoT, programación,
+              seguridad informática, CCTV y auditorías ISO.
+            </p>
+          </div>
+        </div>
+
+        <!-- Nueva sección para laboratorios -->
+        <div
+          class="section-subtitle"
+          style="margin-top: 60px; margin-bottom: 40px"
+        >
+          <h3 style="color: #00ffff; font-size: 1.8rem; margin-bottom: 20px">
+            Laboratorios Especializados en Alquiler
+          </h3>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            Espacios completamente equipados para investigación, desarrollo y
+            capacitación
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-hex">
+            <div class="hex-shape"></div>
+            <div class="hex-content">
+              <div class="hex-icon">
+                <img
+                  src="quimica.png"
+                  alt="Quimica Icon"
+                  style="width: 40px; height: 40px"
+                />
+              </div>
+              <h3>Laboratorio de Química</h3>
+              <p>
+                Espacio completamente equipado para análisis químicos,
+                experimentos y investigación con instrumentos de última
+                generación.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-hex">
+            <div class="hex-shape"></div>
+            <div class="hex-content">
+              <div class="hex-icon">
+                <img
+                  src="fisica.png"
+                  alt="fisica Icon"
+                  style="width: 40px; height: 40px"
+                />
+              </div>
+              <h3>Laboratorio de Física</h3>
+              <p>
+                Instrumentos especializados para experimentos, mediciones
+                precisas y desarrollo de proyectos de investigación física.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-hex">
+            <div class="hex-shape"></div>
+            <div class="hex-content">
+              <div class="hex-icon">
+                <img
+                  src="bot.png"
+                  alt="Bot Icon"
+                  style="width: 40px; height: 40px"
+                />
+              </div>
+              <h3>Laboratorio de Robótica</h3>
+              <p>
+                Plataformas avanzadas para desarrollo robótico, programación e
+                integración de sistemas IoT y automatización.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-hex">
+            <div class="hex-shape"></div>
+            <div class="hex-content">
+              <div class="hex-icon">
+                <img
+                  src="redes.png"
+                  alt="redes Icon"
+                  style="width: 40px; height: 40px"
+                />
+              </div>
+              <h3>Lab. de Redes y Telecomunicaciones</h3>
+              <p>
+                Equipos profesionales para configuración, pruebas y análisis de
+                redes, telecomunicaciones y sistemas de conectividad.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-hex">
+            <div class="hex-shape"></div>
+            <div class="hex-content">
+              <div class="hex-icon">
+                <img
+                  src="dna.png"
+                  alt="dna Icon"
+                  style="width: 40px; height: 40px"
+                />
+              </div>
+              <h3>Laboratorio de Biología</h3>
+              <p>
+                Microscopios avanzados y equipos especializados para
+                investigación biológica, análisis celular y estudios
+                microbiológicos.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-hex">
+            <div class="hex-shape"></div>
+            <div class="hex-content">
+              <div class="hex-icon">
+                <img
+                  src="ruler.png"
+                  alt="ruler Icon"
+                  style="width: 40px; height: 40px"
+                />
+              </div>
+              <h3>Laboratorio de Matemáticas</h3>
+              <p>
+                Software especializado y herramientas computacionales para
+                cálculo avanzado, modelado y análisis matemático.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1224,23 +1795,21 @@
     <!-- About Section -->
     <section id="nosotros" class="about">
       <div class="container">
+        <!-- Primera sección - El futuro es ahora (sin cambios) -->
         <div class="about-grid">
           <div class="about-text">
             <h2>El Futuro es Ahora</h2>
             <p>
-              En NetQueSMA no solo desarrollamos software, creamos soluciones
-              digitales que evolucionan con tu negocio. Cada línea de código
-              está pensada para generar valor real.
+              NetQueSMA es una empresa multiservicios enfocada en brindar
+              soluciones integrales en tecnología, telecomunicaciones, IoT,
+              seguridad, gestión de calidad y educación.
             </p>
             <p>
-              Nuestro enfoque combina metodologías ágiles, las mejores prácticas
-              de desarrollo y un profundo entendimiento de las necesidades
-              empresariales para entregar resultados excepcionales.
-            </p>
-            <p>
-              Trabajamos con empresas visionarias que entienden que la
-              tecnología bien implementada es el catalizador que impulsa el
-              crecimiento y la innovación sostenible.
+              Nace de la unión entre la experiencia profesional en
+              telecomunicaciones y el compromiso familiar, ofreciendo un
+              portafolio que abarca desde la venta de equipos y el desarrollo de
+              infraestructura de redes, hasta capacitaciones especializadas y
+              alquiler de laboratorios científicos y tecnológicos.
             </p>
           </div>
           <div class="morph-visualization">
@@ -1252,6 +1821,52 @@
             <div class="satellite"></div>
             <div class="satellite"></div>
           </div>
+        </div>
+
+        <!-- Secciones mejoradas de Misión y Visión -->
+        <div class="mission-vision-container">
+          <!-- Sección Misión -->
+          <div class="mission-section">
+            <div class="image-container">
+              <img src="servicio2.webp" alt="Misión NetQueSMA" />
+            </div>
+            <div class="content-card">
+              <div class="connector-line"></div>
+              <h2>Misión</h2>
+              <p>
+                Ofrecer soluciones tecnológicas, educativas y de gestión de
+                calidad que integren telecomunicaciones, IoT, seguridad y
+                formación especializada, brindando a empresas, instituciones y
+                personas herramientas que impulsen su desarrollo, con un enfoque
+                de calidad, sostenibilidad y compromiso humano.
+              </p>
+            </div>
+          </div>
+
+          <!-- Sección Visión -->
+          <div class="vision-section">
+            <div class="image-container">
+              <img src="vision.webp" alt="Visión NetQueSMA" />
+            </div>
+            <div class="content-card">
+              <div class="connector-line"></div>
+              <h2>Visión</h2>
+              <p>
+                Para 2030, ser reconocida como la empresa líder en soluciones
+                multiservicios tecnológicos, educativos y de gestión de calidad
+                en el nororiente colombiano, destacándose por su innovación,
+                confiabilidad y capacidad para integrar tecnología de vanguardia
+                con un enfoque social y sostenible.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Efectos de partículas decorativas -->
+        <div class="particle-bg">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
         </div>
       </div>
     </section>
@@ -1430,34 +2045,52 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>NetQueSMA SAS</h3>
-            <p>
-              Pioneros en desarrollo de software que trasciende las
-              expectativas. Cada proyecto es una obra maestra tecnológica.
+            <h3>NetQueSMA S.A.S.</h3>
+            <p class="company-description">
+              Empresa multiservicios especializada en soluciones integrales de
+              tecnología, telecomunicaciones, IoT, seguridad, gestión de calidad
+              y educación. Transformamos ideas en realidades tecnológicas que
+              impulsan el crecimiento empresarial y el desarrollo humano.
             </p>
+            <div class="company-details">
+              <p><strong>Razón Social:</strong> NetQueSMA S.A.S.</p>
+              <p><strong>Tipo:</strong> Sociedad por Acciones Simplificada</p>
+              <p>
+                <strong>Sector:</strong> Tecnológico y Educativo Multiservicios
+              </p>
+              <p>
+                <strong>Ubicación:</strong> Calle 7# 25-63 barrio el Tope, Ocaña
+                - Norte de Santander
+              </p>
+            </div>
           </div>
 
           <div class="footer-section">
-            <h3>Tecnologías</h3>
-            <a href="#">React & Next.js</a>
-            <a href="#">Node.js & Python</a>
+            <h3>Servicios Tecnológicos</h3>
+            <a href="#">Desarrollo de Software</a>
+            <a href="#">Infraestructura de Redes</a>
+            <a href="#">Soluciones IoT</a>
+            <a href="#">Sistemas de Seguridad</a>
             <a href="#">Cloud Computing</a>
-            <a href="#">Bases de Datos</a>
-            <a href="#">APIs & Microservicios</a>
+            <a href="#">Gestión de Calidad</a>
           </div>
 
           <div class="footer-section">
-            <h3>Industrias</h3>
-            <a href="#">Comercio Electrónico</a>
-            <a href="#">Servicios Financieros</a>
-            <a href="#">Salud Digital</a>
-            <a href="#">Educación</a>
-            <a href="#">Manufactura</a>
+            <h3>Áreas de Aplicación</h3>
+            <a href="#">Telecomunicaciones</a>
+            <a href="#">Educación y Formación</a>
+            <a href="#">Laboratorios Científicos</a>
+            <a href="#">Empresas e Instituciones</a>
+            <a href="#">Sector Público</a>
+            <a href="#">Consultoría Tecnológica</a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2025 NetQueSMA SAS. Forjando el futuro digital.</p>
+          <p>
+            &copy; 2025 NetQueSMA S.A.S. - Conectando el presente con el futuro
+            tecnológico.
+          </p>
         </div>
       </div>
     </footer>
